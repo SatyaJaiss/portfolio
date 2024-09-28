@@ -20,34 +20,138 @@ h2{
     font-weight: 900;
 }
 /* Navbar */
+/* Navbar styles */
 .navbar {
     display: flex;
     justify-content: space-between;
-    padding: 1.5rem;
-    background-color: rgba(15, 23, 42, 0.85);
-    backdrop-filter: blur(10px);
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-}
-
-.logo {
-    font-size: 24px;
-    color: #4d79ff;
+    align-items: center;
+    background-color: #142850;
+    padding: 15px 20px;
+    color: #0ad4ff;
+    position: relative;
+    font-size: xx-large;
+    font-weight: 700;
 }
 
 .nav-links {
-    list-style-type: none;
     display: flex;
-    gap: 2rem;
+    list-style: none;
+}
+
+.nav-links li {
+    margin-left: 20px;
 }
 
 .nav-links li a {
-    color: #f0f4fd;
+    color: white;
     text-decoration: none;
     font-size: 18px;
+    transition: color 0.3s ease;
 }
+
+.nav-links li a:hover {
+    color: #00d4ff;
+}
+
+/* Hamburger button initially hidden */
+.menu-toggle {
+    display: none;
+    position: relative;
+    width: 40px;
+    height: 30px;
+    cursor: pointer;
+    z-index: 1000;
+    background-color: transparent;
+    border: none; 
+    outline: none; 
+}
+.menu-toggle div {
+    width: 100%;
+    height: 4px;
+    background-color: rgba(40, 61, 148, 0.886);
+    margin: 5px 0;
+    transition: all 0.3s ease;
+    border-radius: 2px;
+}
+
+/* Cross (cut) button animation when menu is active */
+.menu-toggle.active .bar1 {
+    transform: rotate(-45deg) translate(-6px, 6px);
+}
+
+.menu-toggle.active .bar2 {
+    opacity: 0;
+}
+
+.menu-toggle.active .bar3 {
+    transform: rotate(45deg) translate(-6px, -6px);
+}
+
+/* Responsive styles for screens less than 768px */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block; /* Show hamburger button */
+    }
+    .nav-links {
+        display: block; /* Use block for better control */
+        position: fixed;
+        top: 0;
+        right: -100%; /* Initially off-screen */
+        height: 100vh;
+        background-color: rgba(20, 40, 80, 0.95);
+        width: 35%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: right 0.3s ease-in-out; /* Smooth sliding */
+        z-index: 999;
+        box-shadow: -10px 0px 15px rgba(0, 0, 0, 0.5);
+    }
+
+    .nav-links li {
+        margin: 15px 0;
+        transform: translateX(-100px);
+        opacity: 0;
+        transition: transform 0.5s ease, opacity 0.5s ease;
+    }
+
+    /* Menu animation for links */
+    .nav-links.active li {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    /* Animate each link slightly later for a staggered effect */
+    .nav-links.active li:nth-child(1) {
+        transition-delay: 0.1s;
+    }
+
+    .nav-links.active li:nth-child(2) {
+        transition-delay: 0.2s;
+    }
+
+    .nav-links.active li:nth-child(3) {
+        transition-delay: 0.3s;
+    }
+
+    .nav-links.active li:nth-child(4) {
+        transition-delay: 0.4s;
+    }
+
+    .nav-links.active li:nth-child(5) {
+        transition-delay: 0.5s;
+    }
+
+    .menu-toggle {
+        display: block; /* Show hamburger button */
+    }
+
+    .nav-links.active {
+        right: 0; /* Slide in from right */
+    }
+}
+
 
 /* Hero Section */
 .hero {
@@ -132,6 +236,7 @@ h2{
     margin-bottom: 20px;
 }
 
+/* Skills grid - responsive */
 .skills-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -148,6 +253,45 @@ h2{
 
 .skill-card:hover {
     transform: translateY(-10px);
+}
+
+/* Responsiveness for smaller screens */
+@media (max-width: 768px) {
+    .skills-box {
+        padding: 30px;
+    }
+
+    .skills-heading {
+        font-size: 30px;
+    }
+
+    .skills-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 15px;
+    }
+
+    .skill-card {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .skills-box {
+        padding: 20px;
+    }
+
+    .skills-heading {
+        font-size: 25px;
+    }
+
+    .skills-grid {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 10px;
+    }
+
+    .skill-card {
+        padding: 10px;
+    }
 }
 
 /* Experience Section */
