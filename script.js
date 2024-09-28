@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const cursor = document.querySelector('.cursor');
 
     function typeRole() {
-        let role = roles[index];
+        let role = roles[index]; 
         let i = 0;
 
         function typeChar() {
@@ -69,6 +69,14 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('mouseenter', () => {
         customCursor.style.opacity = '1';
         customCursorGlow.style.opacity = '1';
+    });
+    //navbar responsiveness
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active'); // Toggle class to slide in/out
+        menuToggle.classList.toggle('active'); // Toggle the cross/cut button effect
     });
 });
 
